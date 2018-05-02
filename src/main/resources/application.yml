@@ -1,0 +1,21 @@
+spring:
+#\u670D\u52A1\u7AEF\u53E3
+  server:
+     port: 8080
+#\u6570\u636E\u6E90
+  datasource:
+     url: jdbc:mysql://localhost:3306/movie_ticket?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+     username: root
+     password: bisha520
+     driver-class-name: com.mysql.jdbc.Driver
+#\u70ED\u90E8\u7F72
+  devtools:
+    restart:
+      enabled: true #\u70ED\u90E8\u7F72\u751F\u6548
+      #\u8BBE\u7F6E\u91CD\u542F\u7684\u76EE\u5F55
+      additional-paths: src/main/java
+      exclude: static/html/** #classpath\u76EE\u5F55\u4E0B\u7684WEB-INF\u6587\u4EF6\u5939\u5185\u5BB9\u4FEE\u6539\u4E0D\u91CD\u542F
+#mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
