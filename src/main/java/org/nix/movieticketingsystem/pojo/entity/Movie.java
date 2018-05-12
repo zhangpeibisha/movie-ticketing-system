@@ -1,11 +1,11 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.validator.constraints.Length;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
@@ -22,6 +22,7 @@ public class Movie extends BaseEntity {
     private String director; // 导演
     private String starring; // 主演
     private String pictureUrl; // 电影海报图片地址
+    private List<Cinema> cinemas; // 电影和电影院多对多
 
     @Column(name = "movieName", nullable = false, length = 20)
     @Length(min = 1)
@@ -57,6 +58,15 @@ public class Movie extends BaseEntity {
         return pictureUrl;
     }
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_cinema"
+            , joinColumns = {@JoinColumn(name = "movies")}
+            , inverseJoinColumns = {@JoinColumn(name = "cinemas")})
+    @JSONField(serialize = false)
+    public List<Cinema> getCinemas() {
+        return cinemas;
+    }
+
     public void setMovieName(String movieName) {
         this.movieName = movieName;
     }
@@ -79,5 +89,9 @@ public class Movie extends BaseEntity {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public void setCinemas(List<Cinema> cinemas) {
+        this.cinemas = cinemas;
     }
 }
