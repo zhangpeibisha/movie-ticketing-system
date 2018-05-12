@@ -3,7 +3,9 @@ package org.nix.movieticketingsystem.dao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.nix.movieticketingsystem.MovieTicketingSystemApplication;
+import org.nix.movieticketingsystem.pojo.dao.CinemaRepository;
 import org.nix.movieticketingsystem.pojo.dao.MovieRepository;
+import org.nix.movieticketingsystem.pojo.dao.entitymanger.session.CinemaDao;
 import org.nix.movieticketingsystem.pojo.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,9 @@ public class DatabasesTest {
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private CinemaRepository cinemaRepository;
 
     @Test
     public void listAddMovie(){
@@ -115,4 +120,26 @@ public class DatabasesTest {
         System.out.println();
     }
 
+
+
+    @Test
+    public void findAllByMovieNameTest(){
+        System.out.println();
+    }
+
+    @Test
+    public void CountByMovieNameTest(){
+        cinemaRepository.CountByMovieName("a");
+        System.out.println();
+    }
+
+
+    @Autowired
+    private CinemaDao cinemaDao;
+
+    @Test
+    public void selectTest(){
+        cinemaDao.findAllByMovieName("a",1,10);
+        System.out.println();
+    }
 }
