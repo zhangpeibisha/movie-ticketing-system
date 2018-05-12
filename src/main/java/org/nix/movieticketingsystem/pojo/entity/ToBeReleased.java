@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
- *
+ * <p>
  * 待放电影
  */
 @Entity
@@ -17,8 +17,9 @@ public class ToBeReleased extends BaseEntity {
     private Hall hall;
     private Date playTime;
     private Movie movie;
+    private double money; // 当场观看电影需要的金额
 
-    @ManyToOne(targetEntity = Hall.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Hall.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "hall")
     public Hall getHall() {
         return hall;
@@ -30,10 +31,15 @@ public class ToBeReleased extends BaseEntity {
         return playTime;
     }
 
-    @ManyToOne(targetEntity = Movie.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "movie")
     public Movie getMovie() {
         return movie;
+    }
+
+    @Column(name = "money")
+    public double getMoney() {
+        return money;
     }
 
     public void setHall(Hall hall) {
@@ -46,5 +52,9 @@ public class ToBeReleased extends BaseEntity {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 }

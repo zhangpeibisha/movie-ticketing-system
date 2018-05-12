@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * repositories
  */
 @SpringBootApplication
+@EnableTransactionManagement //启动事务管理
 @EnableJpaRepositories("org.nix.movieticketingsystem.pojo.dao")
 @ComponentScan(basePackages = "org.nix.movieticketingsystem")
 @EntityScan("org.nix.movieticketingsystem.pojo.entity")
