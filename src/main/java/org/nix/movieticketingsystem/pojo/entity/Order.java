@@ -11,7 +11,7 @@ import java.util.Date;
  * 订单实体
  */
 @Entity
-@Table(name = "Order")
+@Table(name = "UserOrder")
 public class Order extends BaseEntity {
 
     /**
