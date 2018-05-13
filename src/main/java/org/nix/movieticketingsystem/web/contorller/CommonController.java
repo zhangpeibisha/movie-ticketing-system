@@ -1,5 +1,6 @@
 package org.nix.movieticketingsystem.web.contorller;
 
+import org.nix.movieticketingsystem.web.annotation.Authority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,6 +12,7 @@ public class CommonController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:templates/login";
+        System.out.println("进入*************");
+        return "redirect:/html/login.html";
     }
 }

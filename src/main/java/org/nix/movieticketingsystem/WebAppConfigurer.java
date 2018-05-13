@@ -1,8 +1,14 @@
 package org.nix.movieticketingsystem;
+import org.nix.movieticketingsystem.web.handler.interceptors.AuthorityInterceptor;
+import org.nix.movieticketingsystem.web.handler.resolver.CurrentUserMethodArgumentResolver;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.List;
+
 /**
  * Create by zhangpe0312@qq.com on 2018/5/9.
  */
@@ -17,7 +23,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter{
         // 多个拦截器组成一个拦截器链
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-//        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new AuthorityInterceptor()).addPathPatterns("/**"); //权限拦截
 
 
         super.addInterceptors(registry);
@@ -33,5 +39,14 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter{
         //      registry.addResourceHandler("/new/**").addResourceLocations("classpath:/new/");
         //      registry.addResourceHandler("/**").addResourceLocations("/");
         super.addResourceHandlers(registry);
+    }
+
+    /**
+     * 添加参数解析器
+     * @param argumentResolvers
+     */
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new CurrentUserMethodArgumentResolver());
     }
 }
