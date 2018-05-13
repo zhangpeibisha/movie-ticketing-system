@@ -3,7 +3,6 @@ package org.nix.movieticketingsystem.pojo.dao.entitymanger.session;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.nix.movieticketingsystem.pojo.dao.entitymanger.base.BaseEntityManger;
-import org.nix.movieticketingsystem.pojo.dao.entitymanger.base.SupperBaseDAOImp;
 import org.nix.movieticketingsystem.pojo.entity.Cinema;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

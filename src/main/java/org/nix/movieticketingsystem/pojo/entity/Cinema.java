@@ -19,7 +19,7 @@ public class Cinema extends BaseEntity {
     private String cinemaName;
     private String address;
     private List<Movie> movies;
-
+    private User user; // 拥有人
 
     @Column(name = "cinemaName", nullable = false, length = 20)
     @Length(min = 1)
@@ -42,6 +42,12 @@ public class Cinema extends BaseEntity {
         return movies;
     }
 
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user")
+    public User getUser() {
+        return user;
+    }
+
     public void setCinemaName(String cinemaName) {
         this.cinemaName = cinemaName;
     }
@@ -52,5 +58,9 @@ public class Cinema extends BaseEntity {
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

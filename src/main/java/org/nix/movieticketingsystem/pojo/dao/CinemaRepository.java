@@ -47,4 +47,5 @@ public interface CinemaRepository extends JpaRepository<Cinema, Integer> {
             "\t\t\t)\n" +
             "\t)")
     long CountByMovieName(String movieName);
+
 }

@@ -1,5 +1,6 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
+import org.hibernate.annotations.Type;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
 import javax.persistence.*;
@@ -39,6 +40,16 @@ public class Order extends BaseEntity {
      */
     private User user;
 
+    /**
+     * 是否支付
+     */
+    private boolean isPayment = false;
+
+    /**
+     * 购买的座位
+     */
+    private BuySeat buySeat;
+
     @ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "movie")
     public Movie getMovie() {
@@ -68,12 +79,22 @@ public class Order extends BaseEntity {
         return money;
     }
 
-    @ManyToOne(targetEntity = User.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user")
     public User getUser() {
         return user;
     }
 
+    @Column(name = "isPayment")
+    @Type(type = "yes_no")
+    public boolean isPayment() {
+        return isPayment;
+    }
+
+    @OneToOne(mappedBy = "order")
+    public BuySeat getBuySeat() {
+        return buySeat;
+    }
 
     public void setMovie(Movie movie) {
         this.movie = movie;
@@ -97,5 +118,13 @@ public class Order extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setPayment(boolean payment) {
+        isPayment = payment;
+    }
+
+    public void setBuySeat(BuySeat buySeat) {
+        this.buySeat = buySeat;
     }
 }

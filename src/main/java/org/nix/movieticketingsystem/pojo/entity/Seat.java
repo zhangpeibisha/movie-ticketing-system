@@ -1,9 +1,11 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Length;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
@@ -14,25 +16,13 @@ import javax.persistence.*;
 @Table(name = "Seat")
 public class Seat extends BaseEntity {
 
-    private Integer x;
-    private Integer y;
-    private boolean isBuy;
-    private Hall hall;
+    private String Numbering; // 编号
+    private Hall hall; // 所属影厅
 
-    @Column(name = "x")
-    public Integer getX() {
-        return x;
-    }
-
-    @Column(name = "y")
-    public Integer getY() {
-        return y;
-    }
-
-    @Column(name = "isBuy")
-    @Type(type = "yes_no")
-    public boolean isBuy() {
-        return isBuy;
+    @Column(name = "Numbering", nullable = false, length = 20)
+    @Length(min = 1)
+    public String getNumbering() {
+        return Numbering;
     }
 
     /**
@@ -44,19 +34,12 @@ public class Seat extends BaseEntity {
         return hall;
     }
 
-    public void setX(Integer x) {
-        this.x = x;
-    }
-
-    public void setY(Integer y) {
-        this.y = y;
-    }
-
-    public void setBuy(boolean buy) {
-        isBuy = buy;
+    public void setNumbering(String numbering) {
+        Numbering = numbering;
     }
 
     public void setHall(Hall hall) {
         this.hall = hall;
     }
+
 }
