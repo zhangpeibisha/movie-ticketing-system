@@ -23,8 +23,10 @@ public interface SeatRepository extends JpaRepository<Seat, Integer> {
             value = "SELECT * FROM seat WHERE seat.id IN(\n" +
                     "  SELECT buy_seat.seat FROM buy_seat WHERE buy_seat.to_be_released = ?1\n" +
                     ")")
-    List<Seat> findBuySeatByHall(int toBeReleasedId);
+    List<Seat> findBuySeatByToBeReleasedId(int toBeReleasedId);
 
-
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM seat WHERE seat.hall = ?1")
+    List<Seat> findAllSeatByHallToBeReleasedId(int toBeReleasedId);
 
 }

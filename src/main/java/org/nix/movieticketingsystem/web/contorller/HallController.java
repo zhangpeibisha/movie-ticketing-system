@@ -26,6 +26,7 @@ public class HallController {
     @Autowired
     private HallServer hallServer;
 
+
     /**
      * 电影商给自己的影院的影厅添加待放映电影
      * @param user 电影商
@@ -51,5 +52,30 @@ public class HallController {
                     .fail(HttpStatus.FORBIDDEN,"操作被拒绝")
                     .send();
         }
+    }
+
+    /**
+     * 为电影院添加影厅
+     * @param user 电影商
+     * @param cinemaId 电影院id
+     * @param hallName 放映厅名字
+     * @param numberSeat 放映厅座位数量
+     * @return 操作结果
+     */
+    @PostMapping(value = "/addHall")
+    @Authority(role = RoleEnum.ROLE_CINEMA)
+    public Map<String,Object> addHall(@CurrentUser User user,
+                                      @RequestParam("cinemaId")int cinemaId,
+                                      @RequestParam("hallName")String hallName,
+                                      @RequestParam("numberSeat")int numberSeat){
+       if (hallServer.addHall(user,cinemaId,hallName,numberSeat)){
+           return new ResultMvcMap()
+                   .success()
+                   .send();
+       }else {
+           return new ResultMvcMap()
+                   .fail(HttpStatus.FORBIDDEN,"操作被拒绝")
+                   .send();
+       }
     }
 }
