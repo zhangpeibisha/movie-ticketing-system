@@ -36,17 +36,11 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             Method method = handlerMethod.getMethod();
             Authority authority = method.getAnnotation(Authority.class);
 
-            logger.info("0000000000000000000000000000000000");
-
             if (authority == null)
                 return true;
 
-            logger.info("11111111111111111111111111111111111");
-
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute(SessionEnum.SESSION_USER.getKey());
-
-            logger.info("3333333333333333333333333333333");
 
             if (user == null)
                 throw new AuthorityException();
@@ -63,7 +57,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
     private boolean checkUserRole(User user, RoleEnum[] roleEnum) {
 
-        user = userRepository.findById(user.getAccount());
+        user = userRepository.findByAccount(user.getAccount());
         for (RoleEnum role : roleEnum) {
             if (role == user.getRole())
                 return true;

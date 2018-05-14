@@ -9,19 +9,24 @@ import org.springframework.transaction.annotation.Transactional;
  * Create by zhangpe0312@qq.com on 2018/5/12.
  */
 @Transactional
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     /**
      * 用户登陆
-     * @param account 用户账号
+     *
+     * @param account  用户账号
      * @param password 用户密码
      * @return 用户信息
      */
     @Query(nativeQuery = true,
-    value = "SELECT * FROM `user` WHERE `user`.account = ?1 AND `user`.`password` = ?2 ")
-    User login(String account,String password);
+            value = "SELECT * FROM `user` WHERE `user`.account = ?1 AND `user`.`password` = ?2 ")
+    User login(String account, String password);
 
     @Query(nativeQuery = true,
-    value = "SELECT * FROM `user` WHERE `user`.account = ?1")
-    User findById(String account);
+            value = "SELECT * FROM `user` WHERE `user`.account = ?1")
+    User findByAccount(String account);
+
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM `user` WHERE `user`.id = ?1")
+    User findUserById(int userId);
 }

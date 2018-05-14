@@ -7,8 +7,9 @@ package org.nix.movieticketingsystem.commons.enums;
  */
 public enum RoleEnum {
 
-    ROLE_USER("USER","消费者");
-
+    ROLE_USER("USER","消费者"),
+    ROLE_MANGER("MANGER","管理员"),
+    ROLE_CINEMA("CINEMA","电影商");
     /**
      * 角色名字
      */
