@@ -14,7 +14,7 @@ import java.util.List;
 public interface HallRepository extends JpaRepository<Hall, Integer> {
 
     /**
-     * 通过电影名字和电影院得到这个电影院能够播放的影厅
+     * 通过电影id和电影院得到这个电影院能够播放的影厅
      * <p>
      * 1.查找到这个电影院
      * 2.查找到能够播放这个电影的影厅

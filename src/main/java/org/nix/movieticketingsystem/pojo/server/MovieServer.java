@@ -20,7 +20,7 @@ public class MovieServer {
 
     public BaseResultDto findTopTenMovie(int countMovie){
         List<Movie> movies = movieRepository.finHotMovieList(countMovie);
-        return new FindTopMovie(movies);
+        return new FindTopMovie(movies).result();
     }
 
 }

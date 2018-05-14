@@ -1,6 +1,7 @@
 package org.nix.movieticketingsystem.pojo.dao;
 
 import org.nix.movieticketingsystem.pojo.entity.Cinema;
+import org.nix.movieticketingsystem.pojo.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,7 +14,7 @@ public interface CinemaRepository extends JpaRepository<Cinema, Integer> {
 
     /**
      * 通过电影名字查询最近能够放映的电影院总数
-     * @param movieName 电影名字
+     * @param movieId 电影名字
      * @return 最近三天能够放映的电影院总数
      */
     @Query(nativeQuery = true, value =
@@ -46,6 +47,7 @@ public interface CinemaRepository extends JpaRepository<Cinema, Integer> {
             "\t\t\t\t) <= 3\n" +
             "\t\t\t)\n" +
             "\t)")
-    long CountByMovieName(String movieName);
+    long CountCinemaByMovieId(int movieId);
+
 
 }

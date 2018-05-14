@@ -20,6 +20,7 @@ public class Cinema extends BaseEntity {
     private String address;
     private List<Movie> movies;
     private User user; // 拥有人
+    private List<Hall> halls;
 
     @Column(name = "cinemaName", nullable = false, length = 20)
     @Length(min = 1)
@@ -48,6 +49,12 @@ public class Cinema extends BaseEntity {
         return user;
     }
 
+    @OneToMany(mappedBy = "cinema",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JSONField(serialize = false)
+    public List<Hall> getHalls() {
+        return halls;
+    }
+
     public void setCinemaName(String cinemaName) {
         this.cinemaName = cinemaName;
     }
@@ -62,5 +69,9 @@ public class Cinema extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setHalls(List<Hall> halls) {
+        this.halls = halls;
     }
 }

@@ -18,12 +18,12 @@ public class CinemaDao extends BaseEntityManger {
     /**
      * 通过电影名字查询最近能够放映的电影院,进行分页展示
      *
-     * @param movieName 电影名字
+     * @param movieId 电影名字
      * @param curr      当前页
      * @param limit     每页多少行数据
      * @return 最近三天能够放映该电影电影院，指定页的数据
      */
-    public List<Cinema> findAllCinameByMovieName(String movieName, int curr, int limit) {
+    public List<Cinema> findAllCinameByMovieId(int movieId, int curr, int limit) {
 
         if (curr < 1)
             return null;
@@ -45,7 +45,7 @@ public class CinemaDao extends BaseEntityManger {
                 "\t\t\t\tFROM\n" +
                 "\t\t\t\t\tto_be_released\n" +
                 "\t\t\t\tWHERE\n" +
-                "\t\t\t\t\tto_be_released.movie = 'movieName'\n" +
+                "\t\t\t\t\tto_be_released.movie = movieId\n" +
                 "\t\t\t\tAND datediff(\n" +
                 "\t\t\t\t\tto_be_released.play_time,\n" +
                 "\t\t\t\t\tNOW()\n" +
@@ -59,7 +59,7 @@ public class CinemaDao extends BaseEntityManger {
 
         int currPage = (curr - 1) * limit;
         int limitRow = currPage + limit;
-        sql = sql.replace("movieName", movieName)
+        sql = sql.replace("movieId", movieId+"")
                 .replace("curr", currPage + "")
                 .replace("limit", limitRow + "");
 

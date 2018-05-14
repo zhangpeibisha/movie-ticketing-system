@@ -1,9 +1,11 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.validator.constraints.Length;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
@@ -16,6 +18,7 @@ public class Hall extends BaseEntity {
 
     private String hallName;
     private Cinema cinema;
+    private List<ToBeReleased> toBeReleaseds;
 
     @Column(name = "hallName",nullable = false,length = 20)
     @Length(min = 1)
@@ -32,11 +35,21 @@ public class Hall extends BaseEntity {
         return cinema;
     }
 
+    @OneToMany(mappedBy = "hall",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JSONField(serialize = false)
+    public List<ToBeReleased> getToBeReleaseds() {
+        return toBeReleaseds;
+    }
+
     public void setHallName(String hallName) {
         this.hallName = hallName;
     }
 
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
+    }
+
+    public void setToBeReleaseds(List<ToBeReleased> toBeReleaseds) {
+        this.toBeReleaseds = toBeReleaseds;
     }
 }

@@ -30,7 +30,7 @@ public class DatabasesTest {
     private CinemaRepository cinemaRepository;
 
     @Test
-    public void listAddMovie(){
+    public void listAddMovie() {
 
         Movie tangrenjie = new Movie();
         tangrenjie.setDirector("王宝强");
@@ -117,7 +117,7 @@ public class DatabasesTest {
     }
 
     @Test
-    public void finHotMovieListTest(){
+    public void finHotMovieListTest() {
         List<Movie> movies = movieRepository.finHotMovieList(2);
         System.out.println();
         BaseResultDto dto = new FindTopMovie(movies);
@@ -125,16 +125,15 @@ public class DatabasesTest {
     }
 
 
-
     @Test
-    public void findAllByMovieNameTest(){
+    public void findAllByMovieNameTest() {
         System.out.println();
     }
 
     @Test
-    public void CountByMovieNameTest(){
-        cinemaRepository.CountByMovieName("a");
-        System.out.println();
+    public void CountByMovieNameTest() {
+        long count = cinemaRepository.CountCinemaByMovieId(1);
+        System.out.println(count);
     }
 
 
@@ -142,8 +141,8 @@ public class DatabasesTest {
     private CinemaDao cinemaDao;
 
     @Test
-    public void selectTest(){
-        cinemaDao.findAllCinameByMovieName("a",1,10);
+    public void selectTest() {
+        cinemaDao.findAllCinameByMovieId(1, 1, 10);
         System.out.println();
     }
 }
