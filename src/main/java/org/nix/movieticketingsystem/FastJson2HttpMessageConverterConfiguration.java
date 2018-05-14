@@ -9,47 +9,34 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/9.
  */
 @Configuration
-@ConditionalOnClass({FastJsonHttpMessageConverter.class}) //1
-@ConditionalOnProperty(//2
-        name = {"spring.http.converters.preferred-json-mapper"},
-        havingValue = "fastjson",
-        matchIfMissing = true
-)
-public class FastJson2HttpMessageConverterConfiguration {
+public class FastJson2HttpMessageConverterConfiguration extends WebMvcConfigurerAdapter {
     protected FastJson2HttpMessageConverterConfiguration() {
     }
 
-    @Bean
-    @ConditionalOnMissingBean({FastJsonHttpMessageConverter.class})//3
-    public FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
-        FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        super.configureMessageConverters(converters);
 
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();//4
-        fastJsonConfig.setSerializerFeatures(
-                SerializerFeature.PrettyFormat,
-                SerializerFeature.WriteClassName,
-                SerializerFeature.WriteMapNullValue
-        );
-        ValueFilter valueFilter = new ValueFilter() {//5
-            //o 是class
-            //s 是key值
-            //o1 是value值
-            public Object process(Object o, String s, Object o1) {
-                if (null == o1){
-                    o1 = "";
-                }
-                return o1;
-            }
-        };
-        fastJsonConfig.setSerializeFilters(valueFilter);
+        //  初始化转换器
+        FastJsonHttpMessageConverter fastConvert = new FastJsonHttpMessageConverter();
+        //  初始化一个转换器配置
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteNullListAsEmpty);
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteNullStringAsEmpty);
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue);
+        //  将配置设置给转换器并添加到HttpMessageConverter转换器列表中
+        fastConvert.setFastJsonConfig(fastJsonConfig);
 
-        converter.setFastJsonConfig(fastJsonConfig);
-
-        return converter;
+        converters.add(fastConvert);
     }
 }

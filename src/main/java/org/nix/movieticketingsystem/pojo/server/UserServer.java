@@ -3,6 +3,7 @@ package org.nix.movieticketingsystem.pojo.server;
 import org.nix.movieticketingsystem.commons.enums.RoleEnum;
 import org.nix.movieticketingsystem.pojo.dao.UserRepository;
 import org.nix.movieticketingsystem.pojo.entity.User;
+import org.nix.movieticketingsystem.web.annotation.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class UserServer {
      * @param user 用户id
      * @return 成功返回true,失败返回false
      */
+    @Authority(role = RoleEnum.ROLE_MANGER)
     public boolean updateRole(String roleName,int user){
 
         User findUser = userRepository.findUserById(user);

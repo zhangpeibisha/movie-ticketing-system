@@ -23,7 +23,7 @@ public class CinemaDao extends BaseEntityManger {
      * @param limit     每页多少行数据
      * @return 最近三天能够放映该电影电影院，指定页的数据
      */
-    public List<Cinema> findAllByMovieName(String movieName, int curr, int limit) {
+    public List<Cinema> findAllCinameByMovieName(String movieName, int curr, int limit) {
 
         if (curr < 1)
             return null;

@@ -6,6 +6,8 @@ import org.nix.movieticketingsystem.MovieTicketingSystemApplication;
 import org.nix.movieticketingsystem.pojo.dao.CinemaRepository;
 import org.nix.movieticketingsystem.pojo.dao.MovieRepository;
 import org.nix.movieticketingsystem.pojo.dao.entitymanger.session.CinemaDao;
+import org.nix.movieticketingsystem.pojo.dto.FindTopMovie;
+import org.nix.movieticketingsystem.pojo.dto.base.BaseResultDto;
 import org.nix.movieticketingsystem.pojo.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -118,6 +120,8 @@ public class DatabasesTest {
     public void finHotMovieListTest(){
         List<Movie> movies = movieRepository.finHotMovieList(2);
         System.out.println();
+        BaseResultDto dto = new FindTopMovie(movies);
+        System.out.println();
     }
 
 
@@ -139,7 +143,7 @@ public class DatabasesTest {
 
     @Test
     public void selectTest(){
-        cinemaDao.findAllByMovieName("a",1,10);
+        cinemaDao.findAllCinameByMovieName("a",1,10);
         System.out.println();
     }
 }
