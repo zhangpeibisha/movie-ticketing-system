@@ -1,6 +1,7 @@
 package org.nix.movieticketingsystem.pojo.server;
 
 import org.nix.movieticketingsystem.pojo.dao.SeatRepository;
+import org.nix.movieticketingsystem.pojo.dto.FindAllSeatsDto;
 import org.nix.movieticketingsystem.pojo.dto.base.BaseResultDto;
 import org.nix.movieticketingsystem.pojo.entity.Seat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class SeatServer {
         List<Seat> buyedSeats = seatRepository.findBuySeatByToBeReleasedId(toBeReleasedId);
         List<Seat> allSeates = seatRepository.findAllSeatByHallToBeReleasedId(toBeReleasedId);
 
-        return null;
+        return new FindAllSeatsDto(buyedSeats,allSeates).result();
     }
 
     public List<Seat> createSeats(int number){
