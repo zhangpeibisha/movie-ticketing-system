@@ -20,6 +20,8 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM movie ORDER BY movie.hot LIMIT 0,?1")
     List<Movie> finHotMovieList(int number);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM movie WHERE movie.id = ?1")
+    Movie findMovieById(int movieId);
 
 
 }

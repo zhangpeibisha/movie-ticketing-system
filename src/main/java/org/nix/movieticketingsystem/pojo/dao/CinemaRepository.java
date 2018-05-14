@@ -5,6 +5,8 @@ import org.nix.movieticketingsystem.pojo.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/12.
@@ -49,5 +51,8 @@ public interface CinemaRepository extends JpaRepository<Cinema, Integer> {
             "\t)")
     long CountCinemaByMovieId(int movieId);
 
+    @Query(nativeQuery = true,
+    value = "SELECT * FROM cinema WHERE cinema.`user` = ?1")
+    List<Cinema> findCinemasByUser(int userId);
 
 }

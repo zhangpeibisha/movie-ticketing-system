@@ -14,7 +14,7 @@ import java.util.List;
  *
  * 返回指定电影能够播放的电影院和播放场次
  */
-public class FindCinemaByMovieId extends AbstractBaseResultDto {
+public class FindCinemaByMovieIdDto extends AbstractBaseResultDto {
 
     private long count;
     private int currPage;
@@ -23,7 +23,7 @@ public class FindCinemaByMovieId extends AbstractBaseResultDto {
     private List<Cinema> cinemas;
     private Movie movie;
 
-    public FindCinemaByMovieId(long count, int currPage, int limit, List<Cinema> cinemas, Movie movie) {
+    public FindCinemaByMovieIdDto(long count, int currPage, int limit, List<Cinema> cinemas, Movie movie) {
         this.count = count;
         this.currPage = currPage;
         this.limit = limit;

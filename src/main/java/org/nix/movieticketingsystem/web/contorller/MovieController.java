@@ -1,13 +1,15 @@
 package org.nix.movieticketingsystem.web.contorller;
 
+import org.nix.movieticketingsystem.commons.enums.RoleEnum;
 import org.nix.movieticketingsystem.commons.utils.ResultMvcMap;
 import org.nix.movieticketingsystem.pojo.dao.MovieRepository;
+import org.nix.movieticketingsystem.pojo.entity.Movie;
+import org.nix.movieticketingsystem.pojo.entity.User;
 import org.nix.movieticketingsystem.pojo.server.MovieServer;
+import org.nix.movieticketingsystem.web.annotation.Authority;
+import org.nix.movieticketingsystem.web.annotation.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -35,4 +37,6 @@ public class MovieController {
                 .success(movieServer.findTopTenMovie(count))
                 .send();
     }
+
+
 }

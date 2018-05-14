@@ -12,7 +12,6 @@ public class CommonController {
 
     @GetMapping("/")
     public String index() {
-        System.out.println("进入*************");
         return "redirect:/html/login.html";
     }
 }

@@ -17,11 +17,11 @@ import java.util.List;
  * 主演
  * 电影海报图片地址
  */
-public class FindTopMovie extends AbstractBaseResultDto {
+public class FindTopMovieDto extends AbstractBaseResultDto {
 
     private List<Movie> movies;
 
-    public FindTopMovie(List<Movie> movies) {
+    public FindTopMovieDto(List<Movie> movies) {
         this.movies = movies;
     }
 
