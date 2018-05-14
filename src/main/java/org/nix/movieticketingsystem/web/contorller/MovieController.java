@@ -38,5 +38,20 @@ public class MovieController {
                 .send();
     }
 
+    /**
+     * 管理员新增一个影片
+     * @param movie 影片对象实体
+     * @return 操作结果
+     */
+    @PostMapping(value = "/addMovie")
+    @Authority(role = RoleEnum.ROLE_MANGER)
+    public Map<String,Object> addMovie(@ModelAttribute Movie movie){
+        movieRepository.save(movie);
+
+        return new ResultMvcMap()
+                .success()
+                .send();
+    }
+
 
 }

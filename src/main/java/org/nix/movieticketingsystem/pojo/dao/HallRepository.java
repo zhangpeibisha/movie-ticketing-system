@@ -28,5 +28,8 @@ public interface HallRepository extends JpaRepository<Hall, Integer> {
             ")")
     List<Hall> findHallByCinemaAndMovie(int cinemaId, int movieId);
 
+    @Query(nativeQuery = true,
+    value = "SELECT * FROM hall WHERE id= ?1")
+    Hall findHallById(int hallId);
 
 }
