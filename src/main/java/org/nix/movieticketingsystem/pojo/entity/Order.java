@@ -1,10 +1,12 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.annotations.Type;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
@@ -48,7 +50,7 @@ public class Order extends BaseEntity {
     /**
      * 购买的座位
      */
-    private BuySeat buySeat;
+    private List<BuySeat> buySeat;
 
     @ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "movie")
@@ -91,8 +93,9 @@ public class Order extends BaseEntity {
         return isPayment;
     }
 
-    @OneToOne(mappedBy = "order")
-    public BuySeat getBuySeat() {
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JSONField(serialize = false)
+    public List<BuySeat> getBuySeat() {
         return buySeat;
     }
 
@@ -124,7 +127,7 @@ public class Order extends BaseEntity {
         isPayment = payment;
     }
 
-    public void setBuySeat(BuySeat buySeat) {
+    public void setBuySeat(List<BuySeat> buySeat) {
         this.buySeat = buySeat;
     }
 }

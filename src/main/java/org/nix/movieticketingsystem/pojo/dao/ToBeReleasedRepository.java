@@ -25,4 +25,8 @@ public interface ToBeReleasedRepository extends JpaRepository<ToBeReleased,Integ
                     "      SELECT hall.id FROM hall WHERE hall.cinema = ?2\n" +
                     ") AND datediff(to_be_released.play_time,NOW()) = ?3")
     List<ToBeReleased> findReleasedByPlayTimeAndCinema(int movieId, int cinemaId, int day);
+
+    @Query(nativeQuery = true,
+    value = "SELECT * FROM to_be_released WHERE id = ?1")
+    ToBeReleased findById(int tobeId);
 }

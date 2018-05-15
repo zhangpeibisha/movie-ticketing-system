@@ -17,7 +17,7 @@ public class BuySeat extends BaseEntity {
     private Seat seat; // 购买的座位
     private ToBeReleased toBeReleased; // 购买的场次
 
-    @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Order.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "BuyOrder")
     public Order getOrder() {
         return order;

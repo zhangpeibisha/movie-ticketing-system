@@ -1,5 +1,6 @@
 package org.nix.movieticketingsystem.web.handler.resolver;
 
+import org.nix.movieticketingsystem.commons.exceptions.AuthorityException;
 import org.nix.movieticketingsystem.web.annotation.CurrentUser;
 import org.nix.movieticketingsystem.pojo.entity.User;
 import org.springframework.core.MethodParameter;
@@ -37,6 +38,6 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
         if (user != null) {
             return user;
         }
-        throw new MissingServletRequestPartException("currentUser");
+        throw new AuthorityException();
     }
 }

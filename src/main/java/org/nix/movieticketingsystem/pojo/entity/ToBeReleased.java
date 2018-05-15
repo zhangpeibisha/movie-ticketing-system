@@ -1,9 +1,11 @@
 package org.nix.movieticketingsystem.pojo.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.nix.movieticketingsystem.pojo.entity.base.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/11.
@@ -18,6 +20,7 @@ public class ToBeReleased extends BaseEntity {
     private Date playTime;
     private Movie movie;
     private double money; // 当场观看电影需要的金额
+    private List<BuySeat> buySeats;
 
     @ManyToOne(targetEntity = Hall.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "hall")
@@ -42,6 +45,12 @@ public class ToBeReleased extends BaseEntity {
         return money;
     }
 
+    @OneToMany(mappedBy = "toBeReleased", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JSONField(serialize = false)
+    public List<BuySeat> getBuySeats() {
+        return buySeats;
+    }
+
     public void setHall(Hall hall) {
         this.hall = hall;
     }
@@ -56,5 +65,9 @@ public class ToBeReleased extends BaseEntity {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public void setBuySeats(List<BuySeat> buySeats) {
+        this.buySeats = buySeats;
     }
 }
