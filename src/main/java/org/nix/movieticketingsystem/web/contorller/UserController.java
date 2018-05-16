@@ -10,6 +10,7 @@ import org.nix.movieticketingsystem.web.annotation.Authority;
 import org.nix.movieticketingsystem.web.annotation.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -108,5 +109,24 @@ public class UserController {
 
         return new ResultMvcMap().success(userServer.getUserMsg(user)).send();
     }
+
+    /**
+     * 充值接口
+     * @param user
+     * @param money
+     * @return
+     */
+    @PostMapping(value = "/recharge")
+    @Transactional
+    @Authority(role = RoleEnum.ROLE_USER)
+    public  Map<String,Object> recharge(@CurrentUser User user,
+                                        @RequestParam("money")double money){
+        user.setMoney(user.getMoney()+money);
+        userRepository.saveAndFlush(user);
+        return new ResultMvcMap()
+                .success()
+                .send();
+    }
+
 
 }

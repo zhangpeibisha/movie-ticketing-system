@@ -24,9 +24,6 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
     private Logger logger = Logger.getLogger(AuthorityInterceptor.class);
 
-    @Autowired
-    private UserRepository userRepository;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws AuthorityException {
 
@@ -57,7 +54,6 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
     private boolean checkUserRole(User user, RoleEnum[] roleEnum) {
 
-        user = userRepository.findByAccount(user.getAccount());
         for (RoleEnum role : roleEnum) {
             if (role == user.getRole())
                 return true;

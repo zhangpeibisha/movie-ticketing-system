@@ -43,14 +43,26 @@ public class MovieController {
     /**
      * 管理员新增一个影片
      *
-     * @param movie 影片对象实体
      * @return 操作结果
      */
     @PostMapping(value = "/addMovie")
     @Authority(role = RoleEnum.ROLE_MANGER)
-    public Map<String, Object> addMovie(@ModelAttribute Movie movie,
-                                        @RequestParam("picture") MultipartFile picture,
+    public Map<String, Object> addMovie(@RequestParam(value = "picture" , required = false) MultipartFile picture,
+                                        @RequestParam("movieName") String movieName,
+                                        @RequestParam("director") String director,
+                                        @RequestParam("starring") String starring,
+                                        @RequestParam("movieType") String movieType,
+                                        @RequestParam("hot") int hot,
+                                        @RequestParam("score") double score,
                                         HttpServletRequest request) {
+
+        Movie movie = new Movie();
+        movie.setStarring(starring);
+        movie.setScore(score);
+        movie.setMovieName(movieName);
+        movie.setHot(hot);
+        movie.setDirector(director);
+        movie.setMovieType(movieType);
 
         if (movieServer.addMovie(movie, picture, request)) {
             return new ResultMvcMap()

@@ -23,6 +23,7 @@ public class Movie extends BaseEntity {
     private String starring; // 主演
     private String pictureUrl; // 电影海报图片地址
     private List<Cinema> cinemas; // 电影和电影院多对多
+    private String movieType; //电影类型
 
     @Column(name = "movieName", nullable = false, length = 20)
     @Length(min = 1)
@@ -67,6 +68,11 @@ public class Movie extends BaseEntity {
         return cinemas;
     }
 
+    @Column(name = "movieType",length = 20)
+    public String getMovieType() {
+        return movieType;
+    }
+
     public void setMovieName(String movieName) {
         this.movieName = movieName;
     }
@@ -93,5 +99,9 @@ public class Movie extends BaseEntity {
 
     public void setCinemas(List<Cinema> cinemas) {
         this.cinemas = cinemas;
+    }
+
+    public void setMovieType(String movieType) {
+        this.movieType = movieType;
     }
 }

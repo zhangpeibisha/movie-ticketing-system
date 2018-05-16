@@ -223,33 +223,64 @@
 						</div></center>
 						<div class="art-content">
 							<div id="contact_form">
-								<form name="form1" id="ff" method="post" action="/user/login">
+								<form name="form1" id="ff" method="post">
 									<label>
 									<span>影片名字:</span>
-									<input type="text"  name="movieName" id="movieName" required>
+									<input type="text"  name="movieName" id="movieName" >
 									</label>
 									<label>
 									<span>热度:</span>
-									<input type="text"  name="hot" id="hot" required>
+									<input type="text"  name="hot" id="hot" >
 									</label>
 									<label>
 									<span>评分:</span>
-									<input type="text"  name="score" id="score" required>
+									<input type="text"  name="score" id="score" >
 									</label>
 									<label>
 									<span>导演:</span>
-									<input type="text"  name="director" id="director" required>
+									<input type="text"  name="director" id="director" >
 									</label>
 									<label>
 									<span>主演:</span>
-									<input type="text"  name="starring" id="starring" required>
+									<input type="text"  name="starring" id="starring" >
 									</label>
 									<label>
 									<span>电影海报:</span>
-									<input type="file"  name="picture" id="picture" required>
+									<input type="file"  name="picture" id="picture" >
 									</label>								
-									<center><input class="sendButton" type="submit" name="Submit" value="添加"></center>
+									<center><input class="sendButton" type="submit" name="Submit" value="添加" onclick="addMovie()"></center>
 								</form>
+
+								<script>
+
+									function addMovie(){
+                                        // var movieName = $("#movieName").val();
+                                        // var hot = $("#hot").val();
+                                        // var score = $("#score").val();
+                                        // var director = $("#director").val();
+                                        // var starring = $("#starring").val();
+                                        // var picture = $("#picture").serialize();
+
+										var form = new FormData(document.getElementById("ff"));
+										$.ajax({
+                                            url: '/movie/addMovie' ,
+                                            type: 'post',
+                                            data: form,
+                                            async: false,
+                                            cache: false,
+                                            contentType: false,
+                                            processData: false,
+                                            success: function (data) {
+												console.info(data);
+                                            }
+										})
+
+									}
+
+
+								</script>
+
+
 							</div>
 						</div>
 					</div>
