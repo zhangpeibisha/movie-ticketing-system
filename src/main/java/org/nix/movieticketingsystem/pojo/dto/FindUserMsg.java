@@ -16,7 +16,14 @@ public class FindUserMsg extends AbstractBaseResultDto {
 
     @Override
     public void handler() {
-        user.setPassword(null);
+        User user = new User();
+        user.setMoney(this.user.getMoney());
+        user.setRole(this.user.getRole());
+        user.setAccount(this.user.getAccount());
+        user.setCreateTime(this.user.getCreateTime());
+        user.setId(this.user.getId());
+        user.setMoney(this.user.getMoney());
+        this.user = user;
     }
 
     public User getUser() {

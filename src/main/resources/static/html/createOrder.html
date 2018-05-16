@@ -201,28 +201,26 @@
 							<div class="art-content">
 								<div id="contact_form">
 
-									
-
-									<form name="form1" id="ff" method="post" action="/user/login">
+									<form name="form1" id="ff" method="post" >
 										<label>
 									<span>电影院:</span>
 									<input type="text"  name="cinema" id="cinema" required disabled="disabled" style="background:#CCCCCC">
 									</label>
 										<label>
 									<span>影厅:</span>
-									<input type="text"  name="account" id="account" required disabled="disabled" style="background:#CCCCCC">
+									<input type="text"  name="hall" id="hall" required disabled="disabled" style="background:#CCCCCC">
 									</label>
 										<label>
 									<span>电影：:</span>
-									<input type="text"  name="account" id="account" required disabled="disabled" style="background:#CCCCCC">
+									<input type="text"  name="movie" id="movie" required disabled="disabled" style="background:#CCCCCC">
 									</label>
 										<label>
 									<span>放映时间:</span>
-									<input type="text"  name="account" id="account" required disabled="disabled" style="background:#CCCCCC">
+									<input type="text"  name="playTime" id="playTime" required disabled="disabled" style="background:#CCCCCC">
 									</label>
 										<label>
 									<span>订单金额:</span>
-									<input type="text"  name="account" id="account" required disabled="disabled" style="background:#CCCCCC">
+									<input type="text"  name="money" id="money" required disabled="disabled" style="background:#CCCCCC">
 									</label>
 										<label>
 									<span>下单用户账号:</span>
@@ -233,21 +231,25 @@
 									
 									
 									<script>
-										function GetRequest() {
-											var url = location.search; //获取url中含"?"符后的字串
-											var theRequest = new Object();
-											if(url.indexOf("?") != -1) {
-												var str = url.substr(1);
-												strs = str.split("&");
-												for(var i = 0; i < strs.length; i++) {
-													theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-												}
-											}
-											return theRequest;
-										}
+                                        function GetRequest() {
+                                            var url = location.search; //获取url中含"?"符后的字串
+                                            var theRequest = new Object();
+                                            if(url.indexOf("?") != -1) {
+                                                var str = url.substr(1);
+                                                strs = str.split("&");
+                                                for(var i = 0; i < strs.length; i++) {
+                                                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                                                }
+                                            }
+                                            return theRequest;
+                                        }
+
+                                        var Request = new Object();
+                                        Request = GetRequest();
+
+
 										
-										console.info("fdsafaaf");
-										$("#cinema").val("fasfa");
+
 										
 									</script>
 								</div>

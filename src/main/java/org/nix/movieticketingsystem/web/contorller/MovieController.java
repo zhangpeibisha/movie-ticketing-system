@@ -40,6 +40,15 @@ public class MovieController {
                 .send();
     }
 
+
+    @GetMapping(value = "/findMovieById")
+    public Map<String, Object> findMovieById(@RequestParam("movieId") int movieId) {
+
+        return new ResultMvcMap()
+                .success(movieServer.findMovieById(movieId))
+                .send();
+    }
+
     /**
      * 管理员新增一个影片
      *

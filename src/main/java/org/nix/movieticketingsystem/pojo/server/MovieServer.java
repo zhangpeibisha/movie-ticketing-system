@@ -1,7 +1,9 @@
 package org.nix.movieticketingsystem.pojo.server;
 
+import org.nix.movieticketingsystem.commons.utils.ResultMvcMap;
 import org.nix.movieticketingsystem.commons.utils.file.FileUtil;
 import org.nix.movieticketingsystem.pojo.dao.MovieRepository;
+import org.nix.movieticketingsystem.pojo.dto.FindMovieIdDto;
 import org.nix.movieticketingsystem.pojo.dto.FindTopMovieDto;
 import org.nix.movieticketingsystem.pojo.dto.base.BaseResultDto;
 import org.nix.movieticketingsystem.pojo.entity.Cinema;
@@ -46,6 +48,16 @@ public class MovieServer {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public BaseResultDto findMovieById(int id){
+
+        Movie movie =  movieRepository.findMovieById(id);
+        if (movie == null){
+            return null;
+        }else{
+            return new FindMovieIdDto(movie).result();
         }
     }
 

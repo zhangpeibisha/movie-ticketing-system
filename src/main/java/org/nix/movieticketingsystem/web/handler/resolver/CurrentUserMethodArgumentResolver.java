@@ -40,7 +40,7 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
         if (user != null) {
             return user;
         }
-//        throw new AuthorityException();
-        return null;
+        throw new AuthorityException();
+//        return null;
     }
 }

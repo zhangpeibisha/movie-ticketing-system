@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>KoolTube</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"  type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -20,7 +20,7 @@
     <link href="../owl-carousel/owl.theme.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
 
     <!-- jQuery -->
     <script src="../js/jquery-2.1.1.js"></script>
@@ -59,14 +59,12 @@
     <nav id="menu" class="navbar">
         <div class="container">
             <div class="navbar-header"><span id="heading" class="visible-xs">分类</span>
-                <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+                <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="../index.html"><i class="fa fa-home"></i> 主页</a></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="fa fa-user"></i> 我的账户</a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 我的账户</a>
                         <div class="dropdown-menu">
                             <div class="dropdown-inner">
                                 <ul class="list-unstyled">
@@ -78,8 +76,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="fa fa-play-circle-o"></i> 电影规格</a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-play-circle-o"></i> 电影规格</a>
                         <div class="dropdown-menu">
                             <div class="dropdown-inner">
                                 <ul class="list-unstyled">
@@ -94,8 +91,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="fa fa-list"></i> 电影类别</a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list"></i> 电影类别</a>
                         <div class="dropdown-menu" style="margin-left: -203.625px;">
                             <div class="dropdown-inner">
                                 <ul class="list-unstyled">
@@ -125,94 +121,6 @@
             </div>
         </div>
     </nav>
-
-    <div class="header-slide">
-        <div id="owl-demo" class="owl-carousel">
-
-            <script>
-                var url = "/movie/findTopMovie";
-                console.info("进入主页头展示")
-                //查询热门电影
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    async: true,
-                    data: {
-                        count: 10
-                    },
-                    dataType: "json",
-                    success: function (data) {
-
-                        var str = "";
-
-                        $.each(data, function (i, item) {
-                            str += "<div class='item'>";
-                            str += "<div class='zoom-container'>";
-                            str += "<div class='zoom-caption'>";
-                            str += "<span>";
-                            str += "电影类型"; //从json中获取
-                            str += "</span>";
-                            str += "<span id = " + "json获取电影id" + " onclick='movieDetail(this)'>";
-                            str += "<i class = 'fa fa-play-circle-o fa-5x' style = 'color: #fff'></i>";
-                            str += "</span>";
-                            str += "<p>"
-                            str += "电影名字"
-                            str += "</p>"
-                            str += "</div>";
-                            str += "</div>";
-                            str += "</div>";
-                        });
-
-                        $("#items").html(str);
-                    }
-                });
-
-
-                function cinemaList(data) {
-                    console.info("按钮触发生效")
-                    var id = data.ID;
-                    var url = "/movie/findCountCinemaByMovieId";
-
-                    $.ajax({
-                        type: "get",
-                        url: url,
-                        async: true,
-                        data: {
-                            movie: id,
-                            curr: 0,
-                            limit: 10
-                        },
-                        dataType: "json",
-                        success: function (data) {
-                            if (data.code != 200) {
-                                alert(data.msg);
-                            } else {
-                                //通过电影id查询能够播放的电影院和场次
-                            }
-                        }
-                    });
-                }
-
-
-            </script>
-
-            <div id="items"></div>
-
-            <div class="item">
-                <div class="zoom-container">
-                    <div class="zoom-caption">
-                        <span>Video's Tag</span>
-                        <a href="single.html">
-                            <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-                        </a>
-                        <p>Video's Name</p>
-                    </div>
-                    <img src="images/2.jpg"/>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </header>
 <!-- Header -->
 
@@ -222,55 +130,73 @@
         <div class="row">
             <div id="main-content" class="col-md-8">
                 <div class="box">
-                    <center>
-                        <div class="art-header">
-                            <h1 class="center">登陆张沛的电影售票系统</h1>
-                        </div>
-                    </center>
+                    <center><div class="art-header">
+                        <h1 class="center" id="title"></h1>
+                    </div></center>
                     <div class="art-content">
+
                         <div id="contact_form">
-                            <form name="form1" id="ff" method="post" action="#">
-                                <label>
-                                    <span>请输入充值金额:</span>
-                                    <input type="text" name="money" id="money" required>
-                                </label>
-                                <center><input class="sendButton" type="button" name="Submit" value="充值"
-                                               onclick="login()"></center>
-                            </form>
+                            <div id="movieMsg"></div>
 
                             <script>
 
-                                function login() {
-                                    var url = "/user/recharge";
-
-                                    var money = $("#money").val();
-                                    if (money == ""){
-                                        alert("输入不能为空");
-                                        return;
-                                    }
-                                    if (money <0 ){
-                                        money = 0;
-                                    }
-
-                                    $.ajax({
-                                        type: "post",
-                                        url: url,
-                                        async: true,
-                                        data: {
-                                            money:money
-                                        },
-                                        dataType: "json",
-                                        success: function (data) {
-                                            if (data.code == 200) {
-                                               location.href = "myHome.html";
-                                            } else {
-                                                alert("登陆失败");
-                                            }
+                                function GetRequest() {
+                                    var url = location.search; //获取url中含"?"符后的字串
+                                    var theRequest = new Object();
+                                    if(url.indexOf("?") != -1) {
+                                        var str = url.substr(1);
+                                        strs = str.split("&");
+                                        for(var i = 0; i < strs.length; i++) {
+                                            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
                                         }
-                                    });
+                                    }
+                                    return theRequest;
                                 }
 
+                                var Request = new Object();
+                                Request = GetRequest();
+
+                                var url = "/movie/findMovieById";
+                                $.ajax({
+                                    type:"get",
+                                    url:url,
+                                    async:true,
+                                    dataType:"json",
+                                    data:{
+                                        movieId:Request["id"]
+                                    },
+                                    success:function(data){
+                                        console.info(data);
+                                        if(data.code == 200){
+                                            var str = "";
+                                            var movie = data.data.movie;
+                                            $("#title").val(movie.movieName + "详细信息");
+                                            str += "<p>电影编号："+movie.id+"</p>";
+                                            str += "<p>电影名字："+movie.movieName+"</p>";
+                                            str += "<p>电影类型："+movie.movieType+"</p>";
+                                            str += "<p>电影热度："+movie.hot+"</p>";
+                                            str += "<p>电影评分："+movie.score+"</p>";
+                                            str += "<p>导演："+movie.director+"</p>";
+                                            str += "<p>主演："+movie.starring+"</p>";
+                                            str += "<p>上传时间："+movie.createTime+"</p>";
+                                            str += "<p>电影海报</p>";
+                                            str += "<img src='"+movie.pictureUrl +"'>";
+                                            str += "<div class='vid-tags'>	";
+                                            str += "<a href='createOrder.html?id="+movie.id+"'>购买电影票</a>	";
+                                            str += "<a href='addCinema.html'>返回主页</a>	";
+                                            str += "<a href='#'>个人中心</a>";
+                                            str += "</div>";
+                                            $("#movieMsg").html(str);
+                                        }else{
+                                            alert("获取信息失败");
+                                            return;
+                                        }
+                                    }
+                                });
+
                             </script>
+
+
 
                         </div>
                     </div>
@@ -388,12 +314,12 @@
 <!-- JS -->
 <script src="../owl-carousel/owl.carousel.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $("#owl-demo").owlCarousel({
             autoPlay: 3000,
-            items: 5,
-            itemsDesktop: [1199, 4],
-            itemsDesktopSmall: [979, 4]
+            items : 5,
+            itemsDesktop : [1199,4],
+            itemsDesktopSmall : [979,4]
         });
 
     });
