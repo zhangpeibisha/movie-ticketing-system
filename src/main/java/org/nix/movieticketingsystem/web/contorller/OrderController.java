@@ -25,6 +25,13 @@ public class OrderController {
     @Autowired
     private OrderServer orderServer;
 
+    /**
+     * 用户下订单
+     * @param user
+     * @param tobeReleasedId
+     * @param seatsId
+     * @return
+     */
     @PostMapping(value = "/createOrder")
     @Authority(role = RoleEnum.ROLE_USER)
     public Map<String, Object> createOrder(@CurrentUser User user,
@@ -41,6 +48,12 @@ public class OrderController {
         }
     }
 
+    /**
+     * 用户支付订单
+     * @param user
+     * @param orderId
+     * @return
+     */
     @PostMapping(value = "/paymentOrder")
     @Authority(role = RoleEnum.ROLE_USER)
     public Map<String, Object> paymentOrder(@CurrentUser User user,

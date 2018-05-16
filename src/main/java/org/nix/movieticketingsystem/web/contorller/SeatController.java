@@ -20,6 +20,11 @@ public class SeatController {
     @Autowired
     private SeatServer seatServer;
 
+    /**
+     * 查询该场次电影影厅的所有座位
+     * @param toBeReleasedId
+     * @return
+     */
     @GetMapping(value = "/findSeatByTobeReleased")
     public Map<String,Object> findSeatByTobeReleased(int toBeReleasedId){
 
