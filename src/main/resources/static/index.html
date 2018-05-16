@@ -125,56 +125,9 @@
 	
 	<div class="header-slide">
 		<div id="owl-demo" class="owl-carousel">
+
 			
-			<script>
-				var url = "/movie/findTopMovie";
-					console.info("进入主页头展示")
-					//查询热门电影
-					$.ajax({
-						type:"get",
-						url:url,
-						async:true,
-						data:{
-							count:10
-						},
-						dataType:"json",
-						success:function(data){
-						  
-						   var str = "";
-						
-						   $.each(data, function(i,item) {
-								str += "<div class='item'>";
-									str += "<div class='zoom-container'>";
-										str += "<div class='zoom-caption'>";
-											str += "<span>";
-											str += "电影类型"; //从json中获取
-											str += "</span>";
-										    str += "<span id = "+  "json获取电影id"  +" onclick='movieDetail(this)'>";
-										        str += "<i class = 'fa fa-play-circle-o fa-5x' style = 'color: #fff'></i>";
-										    str += "</span>";
-										    str +=  "<p>"
-										    str +=  "电影名字"
-										    str +=  "</p>"
-										str += "</div>";
-									str += "</div>";
-								str += "</div>";
-							});
-							
-							var view = $("#items").html(str);
-						}
-					});
-				
-				
-				function cinemaList(data){
-					console.info("按钮触发生效")
-					var id = data.ID;
-					location.href = "html/showCineMovie.html?id=" + id;
-				}
-				
-				
-			</script>
-			
-			<div id="items"></div>
+
 			
 			<div class="item">
 				<div class="zoom-container">
@@ -188,9 +141,68 @@
 					<img src="images/2.jpg" />
 				</div>
 			</div>
-			
 		</div>
 	</div>
+
+    <script>
+
+        function temp(movie) {
+            return `<div class="item">
+				<div class="zoom-container">
+					<div class="zoom-caption">
+						<span>${movie.movieType}</span>
+						<a href="single.html" >
+							<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+						</a>
+						<p>${movie.movieName}</p>
+					</div>
+					<img src="${movie.pictureUrl}" />
+				</div>
+			</div>
+			`;
+        }
+        var url = "/movie/findTopMovie";
+        console.info("进入主页头展示")
+        //查询热门电影
+        $(document).ready(function() {
+
+            $.ajax({
+                type:"get",
+                url:url,
+                async:true,
+                data:{
+                    count:10
+                },
+                dataType:"json",
+                success:function(data){
+                    console.log("===")
+                    console.log(data)
+                    $.each(data.data.movies, function(i,item) {
+                        console.log("===" + temp(item));
+                        $("#owl-demo").append($(temp(item)));
+
+                    });
+
+                    $("#owl-demo").owlCarousel({
+                        autoPlay: 3000,
+                        items : 5,
+                        itemsDesktop : [1199,4],
+                        itemsDesktopSmall : [979,4]
+                    });
+
+                }
+            });
+        });
+
+
+        function cinemaList(data){
+            console.info("按钮触发生效")
+            var id = data.ID;
+            location.href = "html/showCineMovie.html?id=" + id;
+        }
+
+
+    </script>
 </header>
 <!-- Header -->
 	
@@ -200,7 +212,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="featured">
-					
+					<div id="showMovie"></div>
+
+
 					<script>
 						var url = "/movie/findTopMovie";
 							console.info("进入主页展示")
@@ -213,104 +227,56 @@
 								   count:10
 								},
 								success:function(data){
-									var str = "	<div class='main-vid'>";
-									    str += "<div class='col-md-6'>";
-										str += "<div class='zoom-container'>";			
-										str += "<div class='zoom-caption'>";					
-										str += "<span>"+ " 电影类型 json获取"  +"</span>";						
-										str += "<a href='#'>"
-												+	"<i class='fa fa-play-circle-o fa-5x' style='color: #fff'></i>"
-											    + "</a>";					
-										str += "<p>"+"电影名字 json"+"</p>";							
-										str += "</div>";							
-										str += "<img src="+ "电影图片地址 json获取" +" />";
-										str += "</div>"+"</div>"+"</div>";
-														
-								   for(var i=1;i<data.movie.length;i++){
-								   	    str += "	<div class='main-vid'>";
-									    str += "<div class='col-md-3'>";
-										str += "<div class='zoom-container'>";			
-										str += "<div class='zoom-caption'>";					
-										str += "<span>"+ " 电影类型 json获取"  +"</span>";						
-										str += "<a href='#'>"
-												+	"<i class='fa fa-play-circle-o fa-5x' style='color: #fff'></i>"
-											    + "</a>";					
-										str += "<p>"+"电影名字 json"+"</p>";							
-										str += "</div>";							
-										str += "<img src="+ "电影图片地址 json获取" +" />";
-										str += "</div>"+"</div>"+"</div>";
+								    var movies = data.data.movies;
+									$("#main").append($(tempBig(movies[0])));
+
+								   for(var i=1;i<movies.length;i++){
+                                       $("#sub").append($(tempSmall(movies[i])));
 								   }
-								   
-								   $("#showMovie").html(str);
 								}
 							});
 						
-						
+					
+							function tempBig(movies) {
+								return `	<div class="zoom-container">
+								<div class="zoom-caption">
+									<span>${movies.movieType}</span>
+									<a href="#">
+										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+									</a>
+									<p>${movies.movieName} </p>
+								</div>
+								<img src="${movies.pictureUrl}" />
+							</div>`;
+                            }
+                            
+                            function tempSmall(movies) {
+								return `<div class="zoom-container">
+								<div class="zoom-caption">
+									<span>${movies.movieType}</span>
+									<a href="#">
+										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+									</a>
+									<p>${movies.movieName}</p>
+								</div>
+								<img src="${movies.pictureUrl}" />
+							</div>`;
+                            }
+
 					</script>
 					
-					
-					<div id="showMovie"></div>
-					
-					<!--<div class="main-vid">
-						<div class="col-md-6">
-							<div class="zoom-container">
-								<div class="zoom-caption">
-									<span>Video's Tag</span>
-									<a href="single.html">
-										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-									</a>
-									<p>Video's Name ** </p>
-								</div>
-								<img src="images/1.jpg" />
-							</div>
+					<div class="main-vid" >
+						<div class="col-md-6" id="main">
+
 						</div>
 					</div>
-					<div class="sub-vid">
-						<div class="col-md-3">
-							<div class="zoom-container">
-								<div class="zoom-caption">
-									<span>Video's Tag</span>
-									<a href="single.html">
-										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-									</a>
-									<p>Video's Name</p>
-								</div>
-								<img src="images/2.jpg" />
-							</div>
-							<div class="zoom-container">
-								<div class="zoom-caption">
-									<span>Video's Tag</span>
-									<a href="single.html">
-										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-									</a>
-									<p>Video's Name</p>
-								</div>
-								<img src="images/3.jpg" />
-							</div>
+					<div class="sub-vid" >
+						<div class="col-md-3" id="sub">
+
 						</div>
-						<div class="col-md-3">
-							<div class="zoom-container">
-								<div class="zoom-caption">
-									<span>Video's Tag</span>
-									<a href="single.html">
-										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-									</a>
-									<p>Video's Name</p>
-								</div>
-								<img src="images/4.jpg" />
-							</div>
-							<div class="zoom-container">
-								<div class="zoom-caption">
-									<span>Video's Tag</span>
-									<a href="single.html">
-										<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-									</a>
-									<p>Video's Name</p>
-								</div>
-								<img src="images/6.jpg" />
-							</div>
-						</div>
-					</div>-->
+					</div>
+					</div>
+
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -386,15 +352,7 @@
 	<!-- JS -->
 	<script src="owl-carousel/owl.carousel.js"></script>
     <script>
-    $(document).ready(function() {
-      $("#owl-demo").owlCarousel({
-        autoPlay: 3000,
-        items : 5,
-        itemsDesktop : [1199,4],
-        itemsDesktopSmall : [979,4]
-      });
 
-    });
     </script>
 	
 </body>

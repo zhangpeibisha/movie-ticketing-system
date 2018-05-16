@@ -234,7 +234,7 @@
                                     <span>请输入充值金额:</span>
                                     <input type="text" name="money" id="money" required>
                                 </label>
-                                <center><input class="sendButton" type="submit" name="Submit" value="登陆"
+                                <center><input class="sendButton" type="submit" name="Submit" value="充值"
                                                onclick="login()"></center>
                             </form>
 
@@ -262,7 +262,7 @@
                                         dataType: "json",
                                         success: function (data) {
                                             if (data.code == 200) {
-                                                location.href = "myHome.html";
+                                                window.location.href = "myHome.html";
                                             } else {
                                                 alert("登陆失败");
                                             }

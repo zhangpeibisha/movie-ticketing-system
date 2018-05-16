@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Create by zhangpe0312@qq.com on 2018/5/14.
@@ -47,21 +49,14 @@ public class FileUtil {
      * @throws IOException 写入文件异常
      */
     public static String write(MultipartFile file, HttpServletRequest request) throws IOException {
-        String fileName = file.getOriginalFilename();
-        String fileTye = fileName.substring((fileName.lastIndexOf('.') + 1));
-        String path = request.getSession().getServletContext().getRealPath(fileTye) + fileName;
-        logger.info("fileName : " + fileName + "\n" +
-                "fileType : " + fileTye + "\n" +
-                "path : " + path);
-        if (write(file, path)){
-            return path;
-        }else {
-            return null;
-        }
+        String path = FileUtil.class.getResource("/").getPath() + "/static/images/" + file.getOriginalFilename();
+        file.transferTo(new File(path));
+        return "/images/" + file.getOriginalFilename();
     }
 
     /**
      * 通过文件路径获取文件名
+     *
      * @param path 文件完整路径
      * @return 文件名
      */
@@ -69,5 +64,22 @@ public class FileUtil {
         return path.substring(path.lastIndexOf("\\") + 1);
     }
 
+    /**
+     * 按照时间创建子目录，防止一个目录中文件过多，不利于以后遍历查找
+     *
+     * @param path
+     * @return
+     */
+    private static File getChildDirectory(String path) {
+        Date currTime = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String time = sdf.format(currTime);
+
+        File file = new File(path, time);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return file;
+    }
 
 }

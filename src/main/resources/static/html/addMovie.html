@@ -229,6 +229,10 @@
 									<input type="text"  name="movieName" id="movieName" >
 									</label>
 									<label>
+										<span>影片类型:</span>
+										<input type="text"  name="movieType" id="movieType" >
+									</label>
+									<label>
 									<span>热度:</span>
 									<input type="text"  name="hot" id="hot" >
 									</label>
@@ -248,7 +252,7 @@
 									<span>电影海报:</span>
 									<input type="file"  name="picture" id="picture" >
 									</label>								
-									<center><input class="sendButton" type="submit" name="Submit" value="添加" onclick="addMovie()"></center>
+									<center><input class="sendButton" type="button" name="Submit" value="添加" onclick="addMovie()"></center>
 								</form>
 
 								<script>
@@ -272,6 +276,13 @@
                                             processData: false,
                                             success: function (data) {
 												console.info(data);
+												if (data.code == 200){
+												    alert("添加电影成功");
+												    return;
+												}else{
+												    alert("添加电影失败");
+												    return;
+												}
                                             }
 										})
 
