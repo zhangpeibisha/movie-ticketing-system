@@ -222,11 +222,7 @@
 									<span>订单金额:</span>
 									<input type="text"  name="money" id="money" required disabled="disabled" style="background:#CCCCCC">
 									</label>
-										<label>
-									<span>下单用户账号:</span>
-									<input type="text"  name="account" id="account" required disabled="disabled" style="background:#CCCCCC">
-									</label>
-										<center><input class="sendButton" type="submit" name="Submit" value="确认下单"></center>
+										<center><input class="sendButton" type="button" name="Submit" value="确认下单"></center>
 									</form>
 									
 									
@@ -247,7 +243,29 @@
                                         var Request = new Object();
                                         Request = GetRequest();
 
-
+                                        var url = "/movie/findMovieById";
+										$.ajax({
+                                            type:"get",
+                                            url:url,
+                                            async:true,
+                                            dataType:"json",
+                                            data:{
+                                                movieId:Request["id"]
+                                            },
+											success:function (data) {
+												if (data.code == 200){
+                                                    var myDate = new Date();
+                                                    var movie = data.data.movie;
+                                                    $("#cinema").val("大地影院九龙坡");
+                                                    $("#hall").val("三号影厅");
+                                                    $("#playTime").val(myDate.toLocaleTimeString());
+                                                    $("#money").val(39);
+                                                    $("#movie").val(movie.movieName);
+												} else {
+												    alert("请求错误");
+												}
+                                            }
+										})
 										
 
 										
@@ -391,7 +409,7 @@
 		<!-- Footer -->
 
 		<!-- JS -->
-		<script src="owl-carousel/owl.carousel.js"></script>
+		<script src="../owl-carousel/owl.carousel.js"></script>
 		<script>
 			$(document).ready(function() {
 				$("#owl-demo").owlCarousel({
