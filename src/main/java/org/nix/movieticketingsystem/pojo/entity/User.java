@@ -17,7 +17,7 @@ public class User extends BaseEntity {
 
     private String account;
     private String password;
-    private Double money;
+    private double money;
     private RoleEnum role;
 
     /**
@@ -34,7 +34,7 @@ public class User extends BaseEntity {
      * 密码加密，必为32位
      */
     @Column(name = "password", nullable = false, length = 32)
-    @Length(min = 32, max = 33)
+//    @Length(min = 32, max = 33)
     public String getPassword() {
         return password;
     }
@@ -44,8 +44,7 @@ public class User extends BaseEntity {
      * 最小值为0
      */
     @Column(name = "money")
-    @Length(min = 0)
-    public Double getMoney() {
+    public double getMoney() {
         return money;
     }
 

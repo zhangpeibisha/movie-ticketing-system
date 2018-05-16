@@ -12,6 +12,6 @@ public class CommonController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/html/login.html";
+        return "redirect:index.html";
     }
 }

@@ -35,4 +35,14 @@ public class HandlerWebException {
                 .send();
     }
 
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(Exception.class)
+    public Map<String,Object> exception(Exception e){
+        e.printStackTrace();
+        logger.info(e);
+        return new ResultMvcMap()
+                .fail(HttpStatus.CONFLICT,"操作失败")
+                .send();
+    }
+
 }

@@ -7,6 +7,7 @@ import org.nix.movieticketingsystem.pojo.dao.UserRepository;
 import org.nix.movieticketingsystem.pojo.entity.User;
 import org.nix.movieticketingsystem.pojo.server.UserServer;
 import org.nix.movieticketingsystem.web.annotation.Authority;
+import org.nix.movieticketingsystem.web.annotation.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +51,31 @@ public class UserController {
         user.setAccount(account);
         user.setPassword(password);
         user.setRole(RoleEnum.ROLE_USER);
+        user.setMoney(0.0);
         userRepository.save(user);
+        return new ResultMvcMap()
+                .success()
+                .send();
+    }
+
+    /**
+     * 修改密码接口
+     * @param account
+     * @return
+     */
+    @PostMapping(value = "/rePassword")
+    public Map<String, Object> rePassword(@RequestParam(value = "account") String account,
+                                        @RequestParam(value = "odlPassword") String odlPassword,
+                                          @RequestParam(value = "newPassword") String newPassword) {
+
+        User user = userRepository.login(account,odlPassword);
+        if (user == null){
+            return new ResultMvcMap()
+                    .fail(HttpStatus.NOT_FOUND, "不存在这个用户")
+                    .send();
+        }
+        user.setPassword(newPassword);
+        userRepository.saveAndFlush(user);
         return new ResultMvcMap()
                 .success()
                 .send();
@@ -74,5 +99,14 @@ public class UserController {
                 .send();
     }
 
+    /**
+     *
+     * @return
+     */
+    @GetMapping("/getUserMsg")
+    public Map<String,Object> getUserMsg(@CurrentUser User user){
+
+        return new ResultMvcMap().success(userServer.getUserMsg(user)).send();
+    }
 
 }

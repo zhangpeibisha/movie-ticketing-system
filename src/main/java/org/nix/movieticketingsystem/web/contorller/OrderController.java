@@ -56,7 +56,7 @@ public class OrderController {
         }
     }
 
-    @PostMapping(value = "/paymentOrder")
+    @PostMapping(value = "/findOrderById")
     @Authority(role = {RoleEnum.ROLE_USER,RoleEnum.ROLE_CINEMA,RoleEnum.ROLE_MANGER})
     public Map<String,Object> findOrderById(@CurrentUser User user,
                                             @RequestParam("orderId") int orderId){

@@ -1,5 +1,6 @@
 package org.nix.movieticketingsystem.web.handler.resolver;
 
+import org.nix.movieticketingsystem.commons.enums.SessionEnum;
 import org.nix.movieticketingsystem.commons.exceptions.AuthorityException;
 import org.nix.movieticketingsystem.web.annotation.CurrentUser;
 import org.nix.movieticketingsystem.pojo.entity.User;
@@ -34,10 +35,12 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
      */
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-        User user = (User) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
+        User user = (User) nativeWebRequest
+                .getAttribute(SessionEnum.SESSION_USER.getKey(), RequestAttributes.SCOPE_SESSION);
         if (user != null) {
             return user;
         }
-        throw new AuthorityException();
+//        throw new AuthorityException();
+        return null;
     }
 }

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>查看放映场次</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="../css/style.css">
+
+		<!-- Owl Carousel Assets -->
+		<link href="../owl-carousel/owl.carousel.css" rel="stylesheet">
+		<link href="../owl-carousel/owl.theme.css" rel="stylesheet">
+
+		<!-- Custom Fonts -->
+		<link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
+
+		<!-- jQuery -->
+		<script src="../js/jquery-2.1.1.js"></script>
+
+		<!-- Core JavaScript Files -->
+		<script src="../js/bootstrap.min.js"></script>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+	</head>
+
+	<body>
+		<header>
+			<!--Top-->
+			<nav id="top">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<strong>淘票票</strong>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<ul class="list-inline top-link link">
+								<li>
+									<a href="index.html"><i class="fa fa-home"></i> 首页</a>
+								</li>
+								<li>
+									<a href="contact.html"><i class="fa fa-comments"></i> 联系我们</a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-question-circle"></i> 帮助</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<!--Navigation-->
+			<nav id="menu" class="navbar">
+				<div class="container">
+					<div class="navbar-header"><span id="heading" class="visible-xs">分类</span>
+						<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+					</div>
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="../index.html"><i class="fa fa-home"></i> 主页</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 我的账户</a>
+								<div class="dropdown-menu">
+									<div class="dropdown-inner">
+										<ul class="list-unstyled">
+											<li><a href="login.html">登陆</a></li>
+											<li><a href="register.html">注册</a></li>
+											<li><a href="repassword.html">修改密码</a></li>
+											<li><a href="myHome.html">个人中心</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-play-circle-o"></i> 电影规格</a>
+								<div class="dropdown-menu">
+									<div class="dropdown-inner">
+										<ul class="list-unstyled">
+											<li>
+												<a href="archive.html">巨制</a>
+											</li>
+											<li>
+												<a href="archive.html">院线</a>
+											</li>
+											<li>
+												<a href="archive.html">经典</a>
+											</li>
+											<li>
+												<a href="archive.html">口碑佳片</a>
+											</li>
+											<li>
+												<a href="archive.html">原声</a>
+											</li>
+											<li>
+												<a href="archive.html">英语</a>
+											</li>
+											<li>
+												<a href="archive.html">其他</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list"></i> 电影类别</a>
+								<div class="dropdown-menu" style="margin-left: -203.625px;">
+									<div class="dropdown-inner">
+										<ul class="list-unstyled">
+											<li>
+												<a href="archive.html">喜剧</a>
+											</li>
+											<li>
+												<a href="archive.html">悲剧</a>
+											</li>
+											<li>
+												<a href="archive.html">爱情</a>
+											</li>
+											<li>
+												<a href="archive.html">动作</a>
+											</li>
+										</ul>
+										<ul class="list-unstyled">
+											<li>
+												<a href="archive.html">枪战</a>
+											</li>
+											<li>
+												<a href="archive.html">犯罪</a>
+											</li>
+											<li>
+												<a href="archive.html">惊悚</a>
+											</li>
+											<li>
+												<a href="archive.html">恐怖</a>
+											</li>
+										</ul>
+										<ul class="list-unstyled">
+											<li>
+												<a href="archive.html">动画</a>
+											</li>
+											<li>
+												<a href="archive.html">悬疑</a>
+											</li>
+											<li>
+												<a href="archive.html">剧情片</a>
+											</li>
+											<li>
+												<a href="archive.html">家庭</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="archive.html"><i class="fa fa-cubes"></i> 我们的产品</a>
+							</li>
+							<li>
+								<a href="contact.html"><i class="fa fa-envelope"></i> 联系我们</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- Header -->
+
+		<!-- /////////////////////////////////////////Content -->
+		<div id="page-content" class="archive-page">
+			<div class="container">
+				<div class="row">
+					<div id="main-content" class="col-md-8">
+
+                        <div id="items-cinemas-movie"></div>
+
+						<article onclick="">
+							<a href="#">
+								<h2 class="vid-name"">1号厅</h2></a>
+							<div class="info">								
+								<span><i class="fa fa-calendar"></i> 2018/5/16 12：00</span>
+							</div>
+							<div class="wrap-vid">
+								<div class="zoom-container">
+									<div class="zoom-caption">
+										<span>动作片</span>
+										<a href="#">
+											<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+										</a>
+										<p>后来的我们</p>
+									</div>
+									<img src="../images/9.jpg" />
+								</div>								
+							</div>
+						</article>
+						<div class="line"></div>
+
+						<article>
+							<a href="#">
+								<h2 class="vid-name">1号厅</h2></a>
+							<div class="info">								
+								<span><i class="fa fa-calendar"></i> 2018/5/16 16：00</span>
+							</div>
+							<div class="wrap-vid">
+								<div class="zoom-container">
+									<div class="zoom-caption">
+										<span>动作片</span>
+										<a href="#">
+											<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+										</a>
+										<p>后来的我们</p>
+									</div>
+									<img src="../images/9.jpg" />
+								</div>								
+							</div>
+						</article>
+						<div class="line"></div>
+						
+						<article>
+							<a href="#">
+								<h2 class="vid-name">3号厅</h2></a>
+							<div class="info">								
+								<span><i class="fa fa-calendar"></i> 2018/5/17 12：00</span>
+							</div>
+							<div class="wrap-vid">
+								<div class="zoom-container">
+									<div class="zoom-caption">
+										<span>动作片</span>
+										<a href="#">
+											<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+										</a>
+										<p>后来的我们</p>
+									</div>
+									<img src="../images/9.jpg" />
+								</div>								
+							</div>
+						</article>
+						<div class="line"></div>
+						
+						<article>
+							<a href="#">
+								<h2 class="vid-name">4号厅</h2></a>
+							<div class="info">								
+								<span><i class="fa fa-calendar"></i> 2018/5/17 9：00</span>
+							</div>
+							<div class="wrap-vid">
+								<div class="zoom-container">
+									<div class="zoom-caption">
+										<span>动作片</span>
+										<a href="#">
+											<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+										</a>
+										<p>后来的我们</p>
+									</div>
+									<img src="../images/9.jpg" />
+								</div>								
+							</div>
+						</article>
+						<div class="line"></div>
+						
+						
+						<article>
+							<a href="#">
+								<h2 class="vid-name">5号厅</h2></a>
+							<div class="info">								
+								<span><i class="fa fa-calendar"></i> 2018/5/17 8：00</span>
+							</div>
+							<div class="wrap-vid">
+								<div class="zoom-container">
+									<div class="zoom-caption">
+										<span>动作片</span>
+										<a href="#">
+											<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+										</a>
+										<p>后来的我们</p>
+									</div>
+									<img src="../images/9.jpg" />
+								</div>								
+							</div>
+						</article>
+						<div class="line"></div>
+						<center>
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick="getCinemas(1)" >1</a>
+								</li>
+								<li>
+									<a href="#" onclick="getCinemas(2)">2</a>
+								</li>
+								<li>
+									<a href="#" onclick="getCinemas(3)">3</a>
+								</li>
+								<li>
+									<a href="#" onclick="getCinemas(4)">4</a>
+								</li>
+								<li>
+									<a href="#" onclick="getCinemas(5)">5</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</center>
+						
+						
+										<script>
+							function GetRequest() {
+								var url = location.search; //获取url中含"?"符后的字串
+								var theRequest = new Object();
+								if(url.indexOf("?") != -1) {
+									var str = url.substr(1);
+									strs = str.split("&");
+									for(var i = 0; i < strs.length; i++) {
+										theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+									}
+								}
+								return theRequest;
+							}
+
+                           $(document).ready(function(){
+                           	getCinemas(0);
+                           })
+
+                           function getCinemas(curr){
+                           	var Request = new Object();
+							Request = GetRequest();
+
+                            if(curr < 0){
+                            	curr = 0;
+                            }
+							console.info("获取到播放该电影的场次和时间")
+							var id = Request["id"];
+							var url = "/movie/findCountCinemaByMovieId";
+
+							$.ajax({
+								type: "get",
+								url: url,
+								async: true,
+								data: {
+									movieId: movieId,
+									cinemaId:cinemaId,
+									curr: curr,
+									limit: 10								
+								},
+								dataType: "json",
+								success: function(data) {
+									if(data.code != 200) {
+										alert(data.msg);
+									} else {
+										//通过电影id查询能够播放的电影院和场次
+										var str = "";
+										
+										for(var j=0;j<50;j++){
+											str += "<article>";
+										str += "<a href='#'>";
+										str += "<h2 class='vid-name'>" + "json 电影厅名字" + "</h2></a>";
+
+										str += "<div class='info'>";
+
+										
+										str += "<article><span><i class='fa fa-calendar'></i>" + "json获取" + "</span>";
+										
+										str += "</div>";
+										str += "<div class='wrap-vid'>";
+										str += "<div class='zoom-container'>";
+										str += "<div class='zoom-caption'>";
+										str += "<span>" + "影片类型" + "</span>";
+										str += "<a href='single.html'>";
+										str += "<i class='fa fa-play-circle-o fa-5x' style='color: #fff'></i>";
+										str += "</a>";
+										str += "<p>" + "影片名字" + "</p>";
+										str += "</div>";
+										str += "<a href='single.html'>";
+										str += "<img src='" + "../images/9.jpg 影片海报图片" + "' />";
+										str += "</div>";
+										str += "<p>";
+										for(var i = 0; i < 20; i++) {
+											str += "播放时间:" + "json获取数据";
+										}
+										str += "</p>";
+										str += "</div>";
+										str += "</article>";
+										str += "<div class='line'></div>";
+										}
+										
+										$("#items-cinemas-movie").html(str);
+									}
+								}
+							});
+                           }
+
+							
+						</script>
+						
+					</div>
+					<div id="sidebar" class="col-md-4">
+
+						<!---- Start Widget ---->
+						<div class="widget wid-follow">
+							<div class="heading">
+								<h4><i class="fa fa-users"></i> 关注我</h4></div>
+							<div class="content">
+								<ul class="list-inline">
+									<li>
+										<a href="facebook.com/">
+											<div class="box-facebook">
+												<span class="fa fa-facebook fa-2x icon"></span>
+												<span>03090207</span>
+												<span>粉丝数量</span>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="facebook.com/">
+											<div class="box-twitter">
+												<span class="fa fa-twitter fa-2x icon"></span>
+												<span>03090207</span>
+												<span>粉丝数量</span>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="facebook.com/">
+											<div class="box-google">
+												<span class="fa fa-google-plus fa-2x icon"></span>
+												<span>03090207</span>
+												<span>粉丝数量</span>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="line"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="top-footer">
+				<ul class="footer-social list-inline">
+					<li>
+						<a href="#"><i class="fa fa-twitter"></i> <span>推特</span></a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-facebook"></i> <span>脸书</span></a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-google-plus"></i> <span>谷歌</span></a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-comments"></i> <span>微信</span></a>
+					</li>
+				</ul>
+			</div>
+			<div class="wrap-footer">
+				<div class="container">
+					<div class="row">
+						<aside class="col-footer col-md-3 widget_recent_entries">
+							<h2 class="footer-title">关于我</h2>
+							<ul>
+								<li>
+									<a href="#">姓名：张沛</a>
+								</li>
+								<li>
+									<a href="#">学号：11503090207</a>
+								</li>
+								<li>
+									<a href="#">班级：115030902</a>
+								</li>
+								<li>
+									<a href="#">完成作业：电影院售票系统的设计与实现</a>
+								</li>
+							</ul>
+						</aside>
+						<aside class="col-footer col-md-3 widget_recent_entries">
+							<h2 class="footer-title">实现功能</h2>
+							<ul>
+								<li>
+									<a href="#">用户登陆</a>
+								</li>
+								<li>
+									<a href="#">用户注册</a>
+								</li>
+								<li>
+									<a href="#">用户查看电影列表</a>
+								</li>
+								<li>
+									<a href="#">管理员增加电影</a>
+								</li>
+							</ul>
+						</aside>
+						<aside class="col-footer col-md-3">
+							<h2 class="footer-title">前端功能</h2> 目前我实现了用户登陆注册修改密码和权限的功能，普通用户能够查询到自己想看的电影，管理员能够添加电影，电影商能够添加自己的影院等功能。
+						</aside>
+						<aside class="col-footer col-md-3">
+							<h2 class="footer-title">服务器功能</h2> 目前服务器搭建基本完成，用户能够登陆注册修改密码更新角色，管理员能够添加电影，电影商能够添加自己的电影院，为自己的电影院规划电影放映， 设定播放价格和时间，能够查看所有购买他的影院的用户订单。普通用户可以查看能够播放该电影的所有影院和场次，并且能够选择对应场次和座位，能够看到 自己下的订单等功能。
+						</aside>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 copyright">
+							<span>完成 &copy;2018/5/15 <a target="_blank" href="http://h2design.taobao.com/">张沛设计</a></span>
+						</div>
+						<div class="col-md-6 col-sm-6 link">
+							<div class="menu-footer-menu-container">
+								<ul id="menu-footer-menu" class="menu list-inline">
+									<li>
+										<a href="#"><i class="fa fa-home"></i> 主页</a>
+									</li>
+									<li>
+										<a href="#"><i class="fa fa-comments"></i> 联系我们</a>
+									</li>
+									<li>
+										<a href="#"><i class="fa fa-question-circle"></i> 帮助</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Footer -->
+
+		<!-- JS -->
+		<script src="owl-carousel/owl.carousel.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#owl-demo").owlCarousel({
+					autoPlay: 3000,
+					items: 5,
+					itemsDesktop: [1199, 4],
+					itemsDesktopSmall: [979, 4]
+				});
+
+			});
+		</script>
+
+	</body>
+
+</html>

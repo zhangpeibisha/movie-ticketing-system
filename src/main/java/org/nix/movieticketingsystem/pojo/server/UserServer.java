@@ -2,6 +2,8 @@ package org.nix.movieticketingsystem.pojo.server;
 
 import org.nix.movieticketingsystem.commons.enums.RoleEnum;
 import org.nix.movieticketingsystem.pojo.dao.UserRepository;
+import org.nix.movieticketingsystem.pojo.dto.FindUserMsg;
+import org.nix.movieticketingsystem.pojo.dto.base.BaseResultDto;
 import org.nix.movieticketingsystem.pojo.entity.User;
 import org.nix.movieticketingsystem.web.annotation.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,10 @@ public class UserServer {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public BaseResultDto getUserMsg(User user){
+        return new FindUserMsg(user).result();
     }
 
 }
